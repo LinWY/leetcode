@@ -6,13 +6,15 @@
 using namespace std;
 
 Node* removeNthFromEnd(Node* head, int n) {
-        if(head==NULL||head->next==NULL)
-        {
-            return head;
-        }
-        Node* p=head;
+     	Node* p=head;
         Node* q=head;
         Node* m=NULL;
+        if(head==NULL||head->next==NULL)
+        {
+            head=NULL;
+            return p;
+        }
+        
         for(int i=0;i<n;i++)
         {
             q=q->next;
@@ -25,14 +27,11 @@ Node* removeNthFromEnd(Node* head, int n) {
         }
 		if(p==head)
 		{
-			head=head->next;
-			
+			head=head->next;			
 		}
 		else
-		{
-            
-           m->next= m->next->next;
-       
+		{           
+           m->next= m->next->next;      
 		}
 		return p;
     }
@@ -42,8 +41,9 @@ void main()
 	list ilist;
 	
     ilist.insertlist(0,1);
+	ilist.insertlist(1,2);
 
-	Node* n=removeNthFromEnd(ilist.gethead(),1); 
+	Node* n=removeNthFromEnd(ilist.gethead(),2); 
 	cout<<"头指针："<<ilist.gethead()->Data<<endl;
 	cout<<"结果："<<n->Data<<endl;
 	system("pause");
